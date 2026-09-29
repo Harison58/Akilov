@@ -1,0 +1,42 @@
+plugins{
+    id 'java'
+}
+
+java{
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+sourceSets{
+    main{
+        java{
+            srcDir 'src'
+        }
+    }
+}
+
+repositories{
+    mavenCentral()
+    maven{ url 'https://www.jitpack.io' }
+}
+
+ext{
+    mindustryVersion = 'v159.7'
+    jabelVersion = "93fde537c7"
+}
+
+dependencies{
+    compileOnly "com.github.Anuken.Arc:arc-core:$mindustryVersion"
+    compileOnly "com.github.Anuken.Mindustry:core:$mindustryVersion"
+}
+
+jar{
+    archiveFileName = "${project.name}.jar"
+    from{
+        configurations.runtimeClasspath.collect{ it.isDirectory() ? it : zipTree(it) }
+    }
+    from("mod.hjson")
+    from("maps") {
+        into("maps")
+    }
+}

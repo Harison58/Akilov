@@ -1,0 +1,9 @@
+name: "last-light"
+displayName: "Last Light"
+author: "Jannet"
+description: "Умирающий красный гигант и путь через внешние планеты к Титану — спутнику Сатурна."
+version: "1.0"
+main: "lastlight.LastLight"
+minGameVersion: "159"
+java: true
+hidden: false
